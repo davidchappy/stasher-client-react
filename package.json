@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "dev": "react-scripts start",
+    "dev:api": "react-scripts start",
+    "dev": "REACT_APP_API_HOST=http://localhost:8000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -38,5 +39,6 @@
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
     "web-vitals": "^2.1.4"
-  }
+  },
+  "proxy": "http://localhost:8000"
 }
