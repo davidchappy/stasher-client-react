@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node server.js",
+    "start": "react-scripts start",
     "dev:api": "react-scripts start",
     "dev": "REACT_APP_API_HOST=http://localhost:8000 react-scripts start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
