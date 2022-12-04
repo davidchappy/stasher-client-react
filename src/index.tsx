@@ -8,6 +8,7 @@ import client from "./graphql/client"
 import { GOODIES_QUERY } from "./graphql/query"
 
 console.log("GQL host: ", process.env.REACT_APP_API_HOST)
+console.log("GQL port: ", process.env.REACT_APP_API_PORT)
 
 client
   .query({
