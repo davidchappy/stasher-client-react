@@ -11,6 +11,8 @@ type Goodie = {
 function App() {
   const { data, loading, error } = useQuery(GOODIES_QUERY)
 
+  console.log({ data, loading, error })
+
   if (error) return <p>Error : {error.message}</p>
 
   if (loading) return <p>Loading...</p>
