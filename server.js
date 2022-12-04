@@ -14,8 +14,6 @@ var options = {
   redirect: false
 }
 
-console.log(path.join(__dirname, "build"))
-
 app.use(express.static(path.join(__dirname, "build"), options))
 
 const port = process.env.PORT || 3000

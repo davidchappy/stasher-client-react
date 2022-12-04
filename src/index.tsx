@@ -7,16 +7,6 @@ import { ApolloProvider } from "@apollo/client"
 import client from "./graphql/client"
 import { GOODIES_QUERY } from "./graphql/query"
 
-console.log("GQL host: ", process.env.REACT_APP_API_HOST)
-console.log("GQL port: ", process.env.REACT_APP_API_PORT)
-
-client
-  .query({
-    query: GOODIES_QUERY
-  })
-  .then(result => console.log(result))
-  .catch(error => console.log(error))
-
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 
 root.render(
