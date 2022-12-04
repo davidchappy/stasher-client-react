@@ -5,6 +5,14 @@ import App from "./App"
 import reportWebVitals from "./reportWebVitals"
 import { ApolloProvider } from "@apollo/client"
 import client from "./graphql/client"
+import { GOODIES_QUERY } from "./graphql/query"
+
+client
+  .query({
+    query: GOODIES_QUERY
+  })
+  .then(result => console.log(result))
+  .catch(error => console.log(error))
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 
