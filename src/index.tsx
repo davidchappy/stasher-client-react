@@ -7,6 +7,8 @@ import { ApolloProvider } from "@apollo/client"
 import client from "./graphql/client"
 import { GOODIES_QUERY } from "./graphql/query"
 
+console.log("GQL host: ", process.env.REACT_APP_API_HOST)
+
 client
   .query({
     query: GOODIES_QUERY
