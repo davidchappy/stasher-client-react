@@ -1,44 +1,34 @@
 import logo from "./logo.svg"
-import "./App.css"
 import { useQuery } from "@apollo/client"
 import { GOODIES_QUERY } from "./graphql/query"
-
-type Goodie = {
-  id: number
-  link: string
-}
+import {
+  Flex,
+  Box,
+  Heading,
+  Icon,
+  Text,
+  Button,
+  List,
+  ListItem,
+  Container,
+  Link
+} from "@chakra-ui/react"
+import Header from "./components/Header"
+import Stash from "./components/Stash"
 
 function App() {
-  const { data, loading, error } = useQuery(GOODIES_QUERY)
-
-  if (error) return <p>Error : {error.message}</p>
-
-  if (loading) return <p>Loading...</p>
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        {data?.goodies ? (
-          <ul>
-            {data.goodies.map((goodie: Goodie) => (
-              <li key={goodie.id}>{goodie.link}</li>
-            ))}
-          </ul>
-        ) : null}
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box className="App">
+      <Header />
+      <Container>
+        <Flex align="center" direction="column" pt="2rem">
+          <Heading as="h2" size="lg">
+            Your Goodies
+          </Heading>
+          <Stash />
+        </Flex>
+      </Container>
+    </Box>
   )
 }
 
