@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client"
 
-export const GOODIES_QUERY = gql`
-  query Goodies {
-    goodies {
+export const STASHABLES_QUERY = gql`
+  query Stashables {
+    stashables {
       id
       link
     }

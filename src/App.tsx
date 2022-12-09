@@ -1,6 +1,6 @@
 import logo from "./logo.svg"
 import { useQuery } from "@apollo/client"
-import { GOODIES_QUERY } from "./graphql/query"
+import { STASHABLES_QUERY } from "./graphql/query"
 import {
   Flex,
   Box,
@@ -23,7 +23,7 @@ function App() {
       <Container>
         <Flex align="center" direction="column" pt="2rem">
           <Heading as="h2" size="lg">
-            Your Goodies
+            Your Stashables
           </Heading>
           <Stash />
         </Flex>

@@ -1,33 +1,33 @@
 import { useQuery } from "@apollo/client"
-import { GOODIES_QUERY } from "../graphql/query"
+import { STASHABLES_QUERY } from "../graphql/query"
 import { List, ListItem, Link, Flex } from "@chakra-ui/react"
 import EmptyStash from "./EmptyStash"
-import AddGoodie from "./AddGoodie"
+import AddStashable from "./AddStashable"
 
-type Goodie = {
+type Stashable = {
   id: number
   link: string
 }
 
 const Stash = () => {
-  const { data, loading, error } = useQuery(GOODIES_QUERY)
+  const { data, loading, error } = useQuery(STASHABLES_QUERY)
 
   if (error) return <p>Error : {error.message}</p>
 
   if (loading) return <p>Loading...</p>
 
-  return data?.goodies ? (
+  return data?.stashables ? (
     <Flex direction="column" w="100%">
       <List pt="1rem" mb="2rem">
-        {data.goodies.map((goodie: Goodie) => (
-          <ListItem key={goodie.id}>
-            <Link href={goodie.link} isExternal>
-              {goodie.link}
+        {data.stashables.map((stashable: Stashable) => (
+          <ListItem key={stashable.id}>
+            <Link href={stashable.link} isExternal>
+              {stashable.link}
             </Link>
           </ListItem>
         ))}
       </List>
-      <AddGoodie />
+      <AddStashable />
     </Flex>
   ) : (
     <EmptyStash />

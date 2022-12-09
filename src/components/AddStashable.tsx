@@ -10,11 +10,11 @@ import {
 } from "@chakra-ui/react"
 import { AddIcon } from "@chakra-ui/icons"
 import { useMutation } from "@apollo/client"
-import { ADD_GOODIE_MUTATION } from "../graphql/mutation"
+import { ADD_STASHABLE_MUTATION } from "../graphql/mutation"
 
-const AddGoodie = () => {
-  const [addGoodie, { loading }] = useMutation(ADD_GOODIE_MUTATION, {
-    refetchQueries: ["Goodies"]
+const AddStashable = () => {
+  const [addStashable, { loading }] = useMutation(ADD_STASHABLE_MUTATION, {
+    refetchQueries: ["Stashables"]
   })
 
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -24,7 +24,7 @@ const AddGoodie = () => {
 
   const handleSubmit = async () => {
     console.log("submit", link)
-    await addGoodie({
+    await addStashable({
       variables: {
         link
       }
@@ -58,9 +58,9 @@ const AddGoodie = () => {
 
   return (
     <Button onClick={onOpen} rightIcon={<AddIcon />}>
-      Add a Goodie
+      Add a Stashable
     </Button>
   )
 }
 
-export default AddGoodie
+export default AddStashable
