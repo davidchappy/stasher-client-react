@@ -10,12 +10,15 @@ import {
 } from "@chakra-ui/react"
 import { AddIcon } from "@chakra-ui/icons"
 import { useMutation } from "@apollo/client"
-import { ADD_STASHABLE_MUTATION } from "../graphql/mutation"
+import { AddStashableMutationDocument } from "../graphql/generated/graphql"
 
 const AddStashable = () => {
-  const [addStashable, { loading }] = useMutation(ADD_STASHABLE_MUTATION, {
-    refetchQueries: ["Stashables"]
-  })
+  const [addStashable, { loading }] = useMutation(
+    AddStashableMutationDocument,
+    {
+      refetchQueries: ["StashablesQuery"]
+    }
+  )
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [link, setLink] = useState("")

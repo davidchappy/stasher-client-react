@@ -1,0 +1,10 @@
+mutation AddStashableMutation($link: String!) {
+  addStashable(link: $link)
+}
+
+query StashablesQuery {
+  stashables {
+    id
+    link
+  }
+}
