@@ -1,0 +1,3 @@
+mutation AddStashable($link: String!) {
+  addStashable(link: $link)
+}

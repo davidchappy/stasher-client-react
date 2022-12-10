@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node server.js",
     "dev:api": "react-scripts start",
-    "dev": "REACT_APP_API_HOST=http://localhost:8000 concurrently \"yarn react-scripts start\" \"yarn codegen\" ",
+    "dev": "REACT_APP_API_HOST=http://localhost:8000 concurrently --names \"ReactScripts,CodeGen\" -c \"bgYellow,bgMagenta\" \"yarn react-scripts start\" \"npx graphql-codegen --config codegen.ts --watch\" ",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -44,11 +44,18 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
-    "react-router-dom": "^6.4.5"
+    "react-router-dom": "^6.4.5",
+    "react-use": "^17.4.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "2.16.1",
     "@graphql-codegen/client-preset": "1.2.3",
+    "@graphql-codegen/named-operations-object": "^2.3.1",
+    "@graphql-codegen/schema-ast": "^2.5.1",
+    "@graphql-codegen/typed-document-node": "^2.3.3",
+    "@graphql-codegen/typescript": "^2.7.3",
+    "@graphql-codegen/typescript-operations": "^2.5.3",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

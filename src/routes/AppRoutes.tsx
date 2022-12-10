@@ -6,7 +6,7 @@ import {
 } from "react-router-dom"
 import ErrorRoute from "./Error"
 import Root from "./root/RootRoute"
-import StashRoute, { stashLoader } from "./stash/StashRoute"
+import Stash from "./stash/Stash"
 
 const shouldRevalidate = ({
   currentUrl,
@@ -26,7 +26,11 @@ const routes = createRoutesFromElements(
     shouldRevalidate={shouldRevalidate}
     errorElement={<ErrorRoute />}
   >
-    <Route loader={stashLoader} index element={<StashRoute />} />
+    <Route
+      // loader={stashLoader}
+      index
+      element={<Stash />}
+    />
   </Route>
 )
 

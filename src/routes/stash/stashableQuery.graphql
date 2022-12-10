@@ -1,0 +1,6 @@
+query Stashables {
+  stashables {
+    id
+    link
+  }
+}

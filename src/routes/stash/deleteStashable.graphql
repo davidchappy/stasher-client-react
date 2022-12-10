@@ -1,0 +1,3 @@
+mutation DeleteStashable($id: Int!) {
+  deleteStashable(id: $id)
+}

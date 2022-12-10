@@ -1,0 +1,3 @@
+mutation UpdateStashable($id: Int!, $link: String!) {
+  updateStashable(id: $id, link: $link)
+}

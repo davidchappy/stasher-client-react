@@ -1,0 +1,20 @@
+type Mutation {
+  addStashable(link: String!): Boolean
+  deleteStashable(id: Int!): Boolean
+  updateStashable(id: Int!, link: String!): Boolean
+}
+
+type Query {
+  stashables(filter: StashableFilter): [Stashable]
+}
+
+type Stashable {
+  id: Int!
+  inserted_at: String
+  link: String
+  updated_at: String
+}
+
+input StashableFilter {
+  search: String
+}

@@ -9,16 +9,14 @@ import {
   ButtonGroup
 } from "@chakra-ui/react"
 import { AddIcon } from "@chakra-ui/icons"
-import { useMutation } from "@apollo/client"
-import { AddStashableMutationDocument } from "../graphql/generated/graphql"
+import {
+  useAddStashableMutation,
+  namedOperations,
+  StashablesDocument
+} from "../graphql/generated"
 
 const AddStashable = () => {
-  const [addStashable, { loading }] = useMutation(
-    AddStashableMutationDocument,
-    {
-      refetchQueries: ["StashablesQuery"]
-    }
-  )
+  const [addStashable, { loading }] = useAddStashableMutation()
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [link, setLink] = useState("")
@@ -30,6 +28,14 @@ const AddStashable = () => {
     await addStashable({
       variables: {
         link
+      },
+      awaitRefetchQueries: true,
+      refetchQueries: [
+        namedOperations.Query.Stashables,
+        { query: StashablesDocument, fetchPolicy: "cache-first" }
+      ],
+      update(cache) {
+        cache.evict({ fieldName: "Stashables" })
       }
     })
     setLink("")
