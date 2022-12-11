@@ -13,13 +13,16 @@ import {
   InputLeftAddon,
   InputRightAddon,
   Icon,
-  InputGroup
+  InputGroup,
+  Image
 } from "@chakra-ui/react"
 import { EditIcon } from "@chakra-ui/icons"
 import { IoSaveOutline } from "react-icons/io5"
 import { ImCancelCircle } from "react-icons/im"
 import { useState, SetStateAction, useRef } from "react"
 import { useKey } from "react-use"
+
+const STASHABLE_HEIGHT = 40
 
 const Stashable = ({ stashable }: { stashable: StashableType }) => {
   const [isEditing, setIsEditing] = useState(false)
@@ -56,12 +59,12 @@ const Stashable = ({ stashable }: { stashable: StashableType }) => {
     setStashableLink(stashable!.link || "")
   }
 
-  const renderLabel = () => {
+  const renderLink = () => {
     if (isEditing) {
       return (
         <FormControl isRequired>
           <InputGroup size="sm">
-            <InputLeftAddon children="https://" />
+            {/* <InputLeftAddon children="https://" /> */}
             <Input
               // ref={inputRef}
               value={stashableLink}
@@ -99,15 +102,48 @@ const Stashable = ({ stashable }: { stashable: StashableType }) => {
     }
 
     return (
-      <Link href={stashable!.link || undefined} isExternal>
+      <Link
+        href={stashable!.link || undefined}
+        isExternal
+        title={stashable.ogResult?.ogTitle || ""}
+      >
         {stashable!.link}
       </Link>
     )
   }
 
+  const renderImage = () => {
+    if (!stashable.ogResult?.ogImage?.url) return null
+
+    const height = parseInt(stashable.ogResult.ogImage.height || "") || 1
+    const width = parseInt(stashable.ogResult.ogImage.width || "") || 1
+
+    const renderWidth = STASHABLE_HEIGHT * (width / height)
+
+    return (
+      <Link
+        href={stashable!.link || undefined}
+        isExternal
+        title={stashable.ogResult.ogTitle || ""}
+      >
+        <Image
+          src={stashable.ogResult.ogImage.url}
+          w={`${renderWidth}px`}
+          height="100%"
+          fit="cover"
+          mr={3}
+          alt={stashable.ogResult.ogTitle || ""}
+        />
+      </Link>
+    )
+  }
+
   return (
-    <Flex justify="space-between">
-      <Box>{renderLabel()}</Box>
+    <Flex justify="space-between" h={`${STASHABLE_HEIGHT}px`}>
+      <Flex align="center">
+        {renderImage()}
+        {renderLink()}
+      </Flex>
       <Box>
         {isDeleting ? null : (
           <IconButton

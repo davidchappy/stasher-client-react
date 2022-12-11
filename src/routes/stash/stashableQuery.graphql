@@ -2,5 +2,17 @@ query Stashables {
   stashables {
     id
     link
+    ogResult {
+      ogDescription
+      ogImage {
+        url
+        height
+        width
+        type
+      }
+      ogTitle
+      ogType
+      ogUrl
+    }
   }
 }

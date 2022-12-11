@@ -4,6 +4,21 @@ type Mutation {
   updateStashable(id: Int!, link: String!): Boolean
 }
 
+type OGImage {
+  height: String
+  type: String
+  url: String
+  width: String
+}
+
+type OGResult {
+  ogDescription: String
+  ogImage: OGImage
+  ogTitle: String
+  ogType: String
+  ogUrl: String
+}
+
 type Query {
   stashables(filter: StashableFilter): [Stashable]
 }
@@ -12,6 +27,7 @@ type Stashable {
   id: Int!
   inserted_at: String
   link: String
+  ogResult: OGResult
   updated_at: String
 }
 

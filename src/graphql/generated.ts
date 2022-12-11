@@ -38,6 +38,23 @@ export type MutationUpdateStashableArgs = {
   link: Scalars['String'];
 };
 
+export type OgImage = {
+  __typename?: 'OGImage';
+  height?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  width?: Maybe<Scalars['String']>;
+};
+
+export type OgResult = {
+  __typename?: 'OGResult';
+  ogDescription?: Maybe<Scalars['String']>;
+  ogImage?: Maybe<OgImage>;
+  ogTitle?: Maybe<Scalars['String']>;
+  ogType?: Maybe<Scalars['String']>;
+  ogUrl?: Maybe<Scalars['String']>;
+};
+
 export type Query = {
   __typename?: 'Query';
   stashables?: Maybe<Array<Maybe<Stashable>>>;
@@ -53,6 +70,7 @@ export type Stashable = {
   id: Scalars['Int'];
   inserted_at?: Maybe<Scalars['String']>;
   link?: Maybe<Scalars['String']>;
+  ogResult?: Maybe<OgResult>;
   updated_at?: Maybe<Scalars['String']>;
 };
 
@@ -77,7 +95,7 @@ export type DeleteStashableMutation = { __typename?: 'Mutation', deleteStashable
 export type StashablesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type StashablesQuery = { __typename?: 'Query', stashables?: Array<{ __typename?: 'Stashable', id: number, link?: string | null } | null> | null };
+export type StashablesQuery = { __typename?: 'Query', stashables?: Array<{ __typename?: 'Stashable', id: number, link?: string | null, ogResult?: { __typename?: 'OGResult', ogDescription?: string | null, ogTitle?: string | null, ogType?: string | null, ogUrl?: string | null, ogImage?: { __typename?: 'OGImage', url?: string | null, height?: string | null, width?: string | null, type?: string | null } | null } | null } | null> | null };
 
 export type UpdateStashableMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -142,7 +160,7 @@ export function useDeleteStashableMutation(baseOptions?: Apollo.MutationHookOpti
 export type DeleteStashableMutationHookResult = ReturnType<typeof useDeleteStashableMutation>;
 export type DeleteStashableMutationResult = Apollo.MutationResult<DeleteStashableMutation>;
 export type DeleteStashableMutationOptions = Apollo.BaseMutationOptions<DeleteStashableMutation, DeleteStashableMutationVariables>;
-export const StashablesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Stashables"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"stashables"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"link"}}]}}]}}]} as unknown as DocumentNode;
+export const StashablesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Stashables"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"stashables"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"link"}},{"kind":"Field","name":{"kind":"Name","value":"ogResult"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ogDescription"}},{"kind":"Field","name":{"kind":"Name","value":"ogImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"type"}}]}},{"kind":"Field","name":{"kind":"Name","value":"ogTitle"}},{"kind":"Field","name":{"kind":"Name","value":"ogType"}},{"kind":"Field","name":{"kind":"Name","value":"ogUrl"}}]}}]}}]}}]} as unknown as DocumentNode;
 
 /**
  * __useStashablesQuery__
